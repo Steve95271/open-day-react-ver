@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import TopicSelector from "./components/TopicSelector";
 import TopicContainer from "./components/TopicContainer";
+import TimeFilter from "./components/TimeFilter";
 import "./style.css";
 
 function App() {
   const [data, setData] = useState(null);
   const [selectedTopic, setSelectedTopic] = useState("all");
+  const [timeFilter, setTimeFilter] = useState("all");
 
   useEffect(() => {
     fetch("OpenDay.json")
@@ -45,7 +47,8 @@ function App() {
         selectedTopic={selectedTopic}
         onChange={handleTopicChange}
       />
-      <TopicContainer topics={topicsToRender} />
+      <TimeFilter filter={timeFilter} onFilterChange={setTimeFilter} />
+      <TopicContainer topics={topicsToRender} timeFilter={timeFilter} />
     </div>
   );
 }

@@ -94,17 +94,18 @@ body {
   font-size: 0.9em;
 }
 
-.topic-selector {
+.selector {
   margin: 20px 0;
 }
 
-.topic-selector label {
+.selector label {
   color: #446b6c;
   margin-right: 10px;
   font-weight: bold;
 }
 
-#topic-select {
+#topic-select,
+#time-filter-select {
   padding: 8px;
   font-size: 1rem;
 }

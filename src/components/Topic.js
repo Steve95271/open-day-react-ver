@@ -1,7 +1,24 @@
 import React from "react";
 import Program from "./Program";
 
-const Topic = ({ topic }) => {
+const Topic = ({ topic, timeFilter }) => {
+  // console.log("Programms");
+  // console.log(topic.programs);
+
+  const filteredPrograms = topic.programs.filter((program) => {
+    const hour = new Date(program.start_time).getHours();
+    switch (timeFilter) {
+      case "all":
+        return true;
+      case "morning":
+        return hour < 12;
+      case "afternoon":
+        return hour >= 12;
+      default:
+        return true;
+    }
+  });
+
   return (
     <section className="topic">
       <div className="topic-header">
@@ -11,9 +28,13 @@ const Topic = ({ topic }) => {
         </div>
       </div>
       <div className="programs-container">
-        {topic.programs.map((program) => (
-          <Program key={program.id} program={program} />
-        ))}
+        {filteredPrograms
+          // sort by early start
+          .sort((a, b) => a.start_time - b.start_time)
+          .map((program) => {
+            // console.log(topic.programs);
+            return <Program key={program.id} program={program} />;
+          })}
       </div>
     </section>
   );

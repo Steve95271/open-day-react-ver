@@ -2,7 +2,7 @@ import React from "react";
 
 const TopicSelector = ({ topics, selectedTopic, onChange }) => {
   return (
-    <section className="topic-selector">
+    <section className="topic-selector selector">
       <label htmlFor="topic-select">Choose different topic to see:</label>
       <select
         id="topic-select"
