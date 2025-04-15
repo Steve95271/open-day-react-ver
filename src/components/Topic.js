@@ -11,8 +11,8 @@ const Topic = ({ topic }) => {
         </div>
       </div>
       <div className="programs-container">
-        {topic.programs.map((program, index) => (
-          <Program key={index} program={program} />
+        {topic.programs.map((program) => (
+          <Program key={program.id} program={program} />
         ))}
       </div>
     </section>
